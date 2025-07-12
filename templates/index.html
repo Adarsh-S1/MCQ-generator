@@ -1,0 +1,227 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate MCQs</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Add a background for glassmorphism effect */
+            background: linear-gradient(to right bottom, #4CAF50, #2196F3); /* Example gradient */
+            background-attachment: fixed; /* Ensures the background stays fixed */
+        }
+        .container {
+            text-align: center;
+            border-radius: 10px;
+            padding: 40px; /* Increased padding */
+            /* Glassmorphism styles */
+            background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Larger shadow for depth */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border: 1px solid rgba(255, 255, 255, 0.18); /* Subtle border */
+            color: white; /* Text color for contrast */
+        }
+        h1, p, label {
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Subtle text shadow */
+        }
+        .form-control-file, .form-control {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+        }
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: none;
+        }
+        .btn-primary {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.7);
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        select.form-control option {
+            background: #333; /* Darker background for select options */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Generate MCQs</h1>
+        <p class="lead">This application generates multiple-choice questions (MCQs) based on the provided text. You can either upload a PDF or TXT file containing the text.</p>
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group" style="margin-top:50px;">
+                <label for="file">Upload File(s) (PDF or TXT)</label>
+                <input type="file" class="form-control-file" id="file" name="files[]" multiple style="margin-left:41%">
+            </div>
+            <div class="form-group">
+                <label for="num_questions">Number of Questions:</label>
+                <select style="margin-left:45%; background: rgba(255, 255, 255, 0.2); color:white; width:10%" class="form-control" id="num_questions" name="num_questions">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Generate MCQs</button>
+        </form>
+    </div>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate MCQs</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* Add a background for glassmorphism effect */
+            background: linear-gradient(to right bottom, #4CAF50, #2196F3); /* Example gradient */
+            background-attachment: fixed; /* Ensures the background stays fixed */
+        }
+        textarea.form-control {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            margin-top: 15px;
+        }
+        textarea.form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .error-message {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-shadow: 0 0 3px rgba(0,0,0,0.5);
+        }
+        .container {
+            text-align: center;
+            border-radius: 10px;
+            padding: 40px; /* Increased padding */
+            /* Glassmorphism styles */
+            background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Larger shadow for depth */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            -webkit-backdrop-filter: blur(10px); /* For Safari */
+            border: 1px solid rgba(255, 255, 255, 0.18); /* Subtle border */
+            color: white; /* Text color for contrast */
+            max-width: 600px; /* Add a max-width to the container */
+            width: 90%; /* Make it responsive */
+        }
+        h1, p, label {
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Subtle text shadow */
+        }
+        .form-control-file, .form-control {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            /* Ensure text inside input is visible */
+        }
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .form-control:focus {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: none;
+        }
+        .btn-primary {
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.7);
+            transform: translateY(-2px); /* Slight lift on hover */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        select.form-control option {
+            background: #333; /* Darker background for select options */
+            color: white;
+        }
+        /* New styling for centering the file input */
+        .centered-file-input {
+            display: flex; /* Use flexbox */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically (if height allows) */
+            flex-direction: column; /* Stack label and input vertically */
+            margin-top: 50px;
+        }
+        .centered-file-input label {
+            margin-bottom: 10px; /* Space between label and input */
+        }
+        .centered-file-input input[type="file"] {
+            width: auto; /* Allow input to size naturally */
+            max-width: 100%; /* Prevent overflow */
+            margin-left: 0 !important; /* Override any conflicting margin */
+        }
+        /* Specific styling for the select dropdown to center it correctly */
+        .form-group .form-control {
+            margin-left: auto !important; /* Override inline styles */
+            margin-right: auto !important; /* Override inline styles */
+            display: block; /* Ensure it takes full width for auto margins to work */
+            width: 100%; /* Or set a specific width like 200px */
+            max-width: 200px; /* Example max width for the select */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Generate MCQs</h1>
+        <p class="lead">This application generates multiple-choice questions (MCQs) based on the provided text. You can either upload a PDF or TXT file containing the text.</p>
+        
+        <!-- Error message display -->
+        {% if error %}
+            <div class="error-message">{{ error }}</div>
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            <div class="form-group centered-file-input"> <label for="file">Upload File(s) (PDF or TXT)</label>
+                <input type="file" class="form-control-file" id="file" name="files[]" multiple> </div>
+            <div class="form-group">
+                <label for="text">Or enter text directly:</label>
+                <textarea class="form-control" id="text" name="text" rows="4" 
+                          placeholder="Enter your text here..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="num_questions">Number of Questions:</label>
+                <select class="form-control" id="num_questions" name="num_questions"> <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Generate MCQs</button>
+        </form>
+    </div>
+</body>
+</html>
