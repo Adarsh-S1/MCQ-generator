@@ -27,7 +27,7 @@ The application uses a Flask backend for handling requests and serving web pages
 ## Demo Video
 
 Watch a quick demo of the MCQ Generator in action:
-(Example: `https://www.youtube.com/watch?v=your_video_id`)
+`https://youtu.be/U-ORTq0k90g`
 
 
 
