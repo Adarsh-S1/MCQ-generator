@@ -1,0 +1,8 @@
+Flask
+flask-bootstrap
+spacy
+PyPDF2
+transformers
+nltk
+sentence-transformers
+numpy
