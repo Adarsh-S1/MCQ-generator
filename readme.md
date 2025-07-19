@@ -94,7 +94,25 @@ nltk.download('punkt', quiet=True)
 nltk.download('wordnet', quiet=True)
 nltk.download('omw-1.4', quiet=True)
 ```
+### 6. 📂 Folder Structure
+
+```
+📦project-root/
+ ┣ 📜app.py
+ ┣ 📜templates/
+ ┃ ┣ 📜index.html
+ ┃ ┗ 📜mcqs.html
+ ┣ 📁static/ (if you have CSS or images)
+ ┣ 📄README.md
+```
+
 ### 6.  Run the Application
 ```
 python app.py
 ```
+## 📄 Example Input Files
+
+You can test the app with:
+- `Text1.txt` (Amazon Rainforest Article)
+- `Text2.txt` (Gutenberg Printing Press)
+- `New Text Document.txt` (Federer vs Nadal Rivalry)
