@@ -2,6 +2,8 @@
 
 ## Project Overview
 
+
+
 The MCQ Generator is a web application designed to create multiple-choice questions (MCQs) automatically from provided text. Users can either upload PDF or TXT files, or directly input text, and the application will generate a specified number of MCQs with options and a correct answer. This tool leverages advanced Natural Language Processing (NLP) models to ensure the generated questions and distractors are relevant and high-quality.
 
 The application uses a Flask backend for handling requests and serving web pages. It integrates several powerful Python libraries and pre-trained models for its core functionality:
